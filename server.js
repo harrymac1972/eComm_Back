@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = require('./routes');
 // import sequelize connection
+// comment added to commit to Heroku
 
 const app = express();
 const PORT = process.env.PORT || 3001;
