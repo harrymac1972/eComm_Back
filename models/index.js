@@ -4,6 +4,7 @@ const Category = require('./Category');
 const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
 
+// ??? - check DAY 3 notes
 
 // Products belongsTo Category
 // 'belongsTo' means it has the Foreign Key

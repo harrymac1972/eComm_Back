@@ -1,5 +1,4 @@
 
-
 const { Category, Product } = require('../models');
 const router = require('express').Router();
 const apiRoutes = require('./api');
