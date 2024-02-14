@@ -1,17 +1,22 @@
 const express = require('express');
 const routes = require('./routes');
-// import sequelize connection
-// comment added to commit to Heroku.
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+// TEMP put POST here to put a bit of data to confirm connection, etc.
+// (look up Ali's FROM SCRATCH demonstration)
+
+
 app.use(routes);
 
-// sync sequelize models to the database, then turn on the server
+
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}!`);
 });
