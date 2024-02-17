@@ -8,7 +8,7 @@ const { Category, Product } = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const categories = await Category.findAll({
-      include: [{ model: Product }],
+      include: [{ model: Product }], // <--- confirm this when testing
     });
     res.status(200).json(categories);
   } catch (err) {
@@ -19,6 +19,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
+        // belongsTo is a ForeignKey so that's why it should be 'included'?
 });
 
 router.post('/', (req, res) => {
