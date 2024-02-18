@@ -1,7 +1,7 @@
 
 
-// const sequelize = require('./config/connection');
-// const { Category, Product } = require('./models/Category');
+const sequelize = require('./config/connection');
+const { Category, Product } = require('./models/Category');
 
 
 const express = require('express');
