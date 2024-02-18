@@ -5,11 +5,11 @@ const { Tag, Product, ProductTag } = require('../../models');
 // The `/api/tags` endpoint
 
 // get all tags
-router.get('/', async (req, res) => {
+router.get('/',async (req, res) => {
   try {
     const tags = await Tag.findAll();
     res.status(200).json(tags);
-  } catch (err) {
+  } catch(err) {
     res.status(500).json(err);
   }
 });
