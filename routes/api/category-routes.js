@@ -22,8 +22,13 @@ router.get('/:id', (req, res) => {
         // belongsTo is a ForeignKey so that's why it should be 'included'?
 });
 
-router.post('/', (req, res) => {
-  // create a new category
+router.post('/', async (req, res) => {
+  try {
+    let newCategory = await Category.create(req.body);
+    res.status(201).json(newCategory);
+  } catch (err) {    
+    res.status(400).json(err);
+  }
 });
 
 router.put('/:id', (req, res) => {
