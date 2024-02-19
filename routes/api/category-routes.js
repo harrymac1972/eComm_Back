@@ -16,10 +16,17 @@ router.get('/',async (req, res) => {
   }
 });
 
-router.get('/:id', (req, res) => {
-  // find one category by its `id` value
-  // be sure to include its associated Products
-        // belongsTo is a ForeignKey so that's why it should be 'included'?
+router.get('/:id', async (req, res) => {
+  try {
+    const category = await Category.findByPk(req.params.id, {});
+    if (!category) {
+      res.status(404).json({ message: 'Category not found' });
+      return;
+    }
+    res.status(200).json(category);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.post('/', async (req, res) => {
