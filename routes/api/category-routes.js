@@ -61,13 +61,25 @@ router.put('/:id', async (req,res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
+    const relatedRecords = await Product.findAll({
+      where: {
+        category_id: req.params.id,
+      },
+    });
+    if (relatedRecords.length > 0) {
+      await Product.destroy({
+        where: {
+          category_id: req.params.id,
+        },
+      });
+    }
     const deletedCategory = await Category.destroy({
       where: {
         id: req.params.id,
       },
     });
     if (!deletedCategory) {
-      res.status(404).json({ message: 'Tag not found' });
+      res.status(404).json({ message: 'Category not found' });
       return;
     }
     res.status(200).json({ message: 'Category deleted' });
@@ -75,6 +87,7 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 
 module.exports = router;
