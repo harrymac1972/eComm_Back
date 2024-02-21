@@ -18,7 +18,7 @@ Product.belongsToMany(Tag,{through: ProductTag, foreignKey: 'product_id'});
 Tag.belongsToMany(Product,{through: ProductTag, foreignKey: 'tag_id'});
 
 // NOTE:  incorrect error was:    {through: "ProductTag", ...
-//         proper is WITHOUT QUOTATION MARK so it pulls variable imported
+//    proper is WITHOUT QUOTATION MARK so it pulls variable imported
 
 module.exports = {
   Product,
