@@ -61,6 +61,7 @@ router.put('/:id', async (req,res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
+    // handle foreign key constraints - if any - first
     const relatedRecords = await Product.findAll({
       where: {
         category_id: req.params.id,
@@ -73,6 +74,7 @@ router.delete('/:id', async (req, res) => {
         },
       });
     }
+    // proceed with 'deletion'
     const deletedCategory = await Category.destroy({
       where: {
         id: req.params.id,
